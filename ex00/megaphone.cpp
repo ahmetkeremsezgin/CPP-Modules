@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <cctype>
 
 std::string toupper_string(const std::string& str)
 {
