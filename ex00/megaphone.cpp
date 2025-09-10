@@ -1,7 +1,6 @@
 #include <iostream>
-#include <string>
 
-std::string toupper_string(const std::string& str)
+std::string toupper_string(const std::string str)
 {
     std::string result;
     for (size_t i = 0; i < str.length(); ++i)
