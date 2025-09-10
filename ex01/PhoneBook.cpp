@@ -4,7 +4,7 @@
 
 PhoneBook::PhoneBook() : index(0) {}
 
-bool is_printable_string(const std::string& str)
+bool is_printable_string(const std::string str)
 {
     for (size_t i = 0; i < str.length(); i++)
     {
@@ -14,7 +14,7 @@ bool is_printable_string(const std::string& str)
     return true;
 }
 
-std::string PhoneBook::get_input(const std::string& prompt)
+std::string PhoneBook::get_input(const std::string prompt)
 {
     std::string input;
     while (true)

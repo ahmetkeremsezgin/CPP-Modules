@@ -9,7 +9,7 @@ private:
     Contact contacts[8];
     int index;
 
-    std::string get_input(const std::string& prompt);
+    std::string get_input(const std::string prompt);
 
 public:
     PhoneBook();

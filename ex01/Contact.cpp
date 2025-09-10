@@ -28,7 +28,7 @@ void Contact::print_contact(int index, int full)
     }
     else
     {
-        std::cout << "     " << index << "|"
+        std::cout << "         " << index << "|"
                   << check_str(firstname) << "|"
                   << check_str(lastname) << "|"
                   << check_str(nickname) << std::endl;
