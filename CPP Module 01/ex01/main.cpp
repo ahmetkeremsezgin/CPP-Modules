@@ -9,6 +9,6 @@ int main()
     a[2].announce();
     a[3].announce();
     a[4].announce();
-    delete a[0];
+    delete[] a;
     return (0);
 }

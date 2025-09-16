@@ -1,8 +1,6 @@
 #include <iostream>
 #include "Zombie.hpp"
 
-Zombie::Zombie() : name("John Doe") {}
-
 Zombie::~Zombie(){
     std::cout << name <<": is destroyed" << std::endl;
 }
