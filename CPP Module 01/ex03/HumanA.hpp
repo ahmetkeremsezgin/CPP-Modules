@@ -1,6 +1,6 @@
+#pragma once
 #include <iostream>
 #include "Weapon.hpp"
-#pragma once
 
 class HumanA{
     private:
