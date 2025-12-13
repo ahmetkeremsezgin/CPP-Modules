@@ -9,6 +9,19 @@ ClapTrap::ClapTrap(std::string name) : name(name), hit_point(10), energy_point(1
               << std::endl;
 }
 
+ClapTrap &ClapTrap::operator=(const ClapTrap &other)
+{
+    if (this != &other)
+    {
+        this->name = other.name;
+        this->hit_point = other.hit_point;
+        this->energy_point = other.energy_point;
+        this->attack_damage = other.attack_damage;
+    }
+    std::cout << "ClapTrap **" << this->name << "** assigned!" << std::endl;
+    return *this;
+}
+
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
     this->name = other.name;

@@ -2,7 +2,7 @@
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
-    name = name;
+    this->name = name;
     hit_point = 100;
     energy_point = 100;
     attack_damage = 30;
@@ -11,6 +11,23 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
     << ", EP: " << this->energy_point
     << ", AD: " << this->attack_damage
     << std::endl;
+};
+
+FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other)
+{
+    std::cout << "FlagTrap **" << this->name << "** copied!" << std::endl;
+};
+FragTrap &FragTrap::operator=(const FragTrap &other)
+{
+    if (this != &other)
+    {
+        this->name = other.name;
+        this->hit_point = other.hit_point;
+        this->energy_point = other.energy_point;
+        this->attack_damage = other.attack_damage;
+    }
+    std::cout << "FlagTrap **" << this->name << "** assigned!" << std::endl;
+    return *this;
 };
 
 FragTrap::~FragTrap()
