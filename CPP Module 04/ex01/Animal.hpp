@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "Brain.hpp"
 
 class Animal {
 protected:
@@ -14,7 +15,10 @@ public:
 };
 
 class Dog : public Animal {
-public:
+    private:
+    Brain* brain;
+
+    public:
     Dog();
     Dog(const Dog& other);
     Dog& operator=(const Dog& other);
@@ -23,6 +27,9 @@ public:
 };
 
 class Cat : public Animal {
+private:
+    Brain* brain;
+
 public:
     Cat();
     Cat(const Cat& other);

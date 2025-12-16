@@ -4,33 +4,30 @@
 
 int main()
 {
-    const Animal* meta = new Animal();
     const Animal* j = new Dog();
     const Animal* i = new Cat();
-
-    std::cout << j->getType() << " " << std::endl;
-    std::cout << i->getType() << " " << std::endl;
-
-    i->makeSound();
-    j->makeSound();
-    meta->makeSound();
-
-    delete meta;
     delete j;
     delete i;
 
-    std::cout << "--------------------------------" << std::endl;
+    int size = 4;
+    Animal* animals[size];
 
-    const WrongAnimal* wrongMeta = new WrongAnimal();
-    const WrongAnimal* wrongI = new WrongCat();
+    for (int k = 0; k < size; k++)
+    {
+        if (k < size / 2)
+            animals[k] = new Dog();
+        else
+            animals[k] = new Cat();
+    }
 
-    std::cout << wrongI->getType() << " " << std::endl;
+    std::cout << "Deleting array..." << std::endl;
+    for (int k = 0; k < size; k++)
+    {
+        delete animals[k];
+    }
+
+    Dog basic;
+    Dog tmp = basic; 
     
-    wrongI->makeSound();
-    wrongMeta->makeSound();
-
-    delete wrongMeta;
-    delete wrongI;
-
     return 0;
 }
