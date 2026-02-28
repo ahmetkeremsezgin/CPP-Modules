@@ -1,4 +1,4 @@
-#include "Form.hpp"
+#include "AForm.hpp"
 
 AForm::AForm(const std::string name, int signGrade, int execGrade) 
     : _name(name), _signed(false), _signGrade(signGrade), _execGrade(execGrade) {
