@@ -1,7 +1,7 @@
 #include "PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target) 
-    : AForm("Robotomy Request", 25, 5), _target(target) {}
+    : AForm("Presidential Pardon", 25, 5), _target(target) {}
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &src) 
     : AForm(src), _target(src._target) {}
@@ -20,5 +20,5 @@ void PresidentialPardonForm::execute(Bureaucrat const & executor) const {
     if (executor.getGrade() > this->getExecGrade())
         throw AForm::GradeTooLowException();
 
-        std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+    std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
