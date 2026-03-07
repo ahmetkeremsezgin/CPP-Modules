@@ -1,21 +1,26 @@
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main() {
     try {
-        Bureaucrat boss("Müdür", 1);
-        Bureaucrat intern("Stajyer", 150);
-        AForm contract("Önemli Sözleşme", 50, 50);
+        // 1. Bir bürokrat oluşturuyoruz (İsim: Bob, Derece: 1)
+        Bureaucrat bob("Bob", 1);
 
-        std::cout << contract << std::endl;
+        // 2. Formu oluşturuyoruz ve "target" olarak "home" veriyoruz.
+        // Bu işlem sonucunda "home_shrubbery" dosyası oluşturulacak.
+        ShrubberyCreationForm form1("home");
 
-        intern.signForm(contract);
-        boss.signForm(contract);
+        std::cout << form1 << std::endl; // Form bilgilerini yazdır
 
-        std::cout << contract << std::endl;
-    } 
-    catch (std::exception &e) {
-        std::cout << "Kritik Hata: " << e.what() << std::endl;
+        // 3. Bürokrat formu imzalamaya çalışıyor
+        bob.signForm(form1);
+
+        // 4. Bürokrat formu çalıştırmaya (execute) çalışıyor
+        bob.executeForm(form1);
+
+    } catch (std::exception &e) {
+        std::cerr << "Hata oluştu: " << e.what() << std::endl;
     }
+
     return 0;
 }
