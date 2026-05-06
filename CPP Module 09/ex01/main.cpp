@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    rpn calculator;
+    Rpn calculator;
     if (calculator.exec(argv[1]) == 0) {
         std::cerr << "Error" << std::endl;
         return 1;    

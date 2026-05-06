@@ -4,14 +4,14 @@
 #include <iostream>
 #include <stack>
 
-class rpn {
+class Rpn {
     private:
         std::stack<int> _stack;
     public:
-        rpn();
-        rpn(const rpn& cpy);
-        rpn& operator=(const rpn& cpy);
-        ~rpn();
+        Rpn();
+        Rpn(const Rpn& cpy);
+        Rpn& operator=(const Rpn& cpy);
+        ~Rpn();
         int exec(std::string data);
 };
 

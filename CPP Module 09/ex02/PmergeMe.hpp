@@ -24,7 +24,6 @@ private:
 
     static std::vector<size_t> generateJacobsthal(size_t n);
 
-    // Bu fonksiyon her zaman Node içeren bir konteynerle çalışır
     template <typename T>
     static void sortImplementation(T& container) {
         if (container.size() <= 1) return;
@@ -58,11 +57,11 @@ private:
         }
 
         for (size_t i = 0; i < winners.size(); ++i) {
-            main_chain.push_back(winners[i]);
-            if (!winners[i].losers.empty()) {
+            if (i > 0 && !winners[i].losers.empty()) {
                 pend.push_back(winners[i].losers.back());
                 winners[i].losers.pop_back();
             }
+            main_chain.push_back(winners[i]);
         }
 
         std::vector<size_t> jacob = generateJacobsthal(pend.size());
@@ -93,7 +92,6 @@ private:
     }
 
 public:
-    // Execute fonksiyonu artık her iki tip için de ayrı Node konteynerleri oluşturur
     template <typename T>
     static double execute(int argc, char** argv, T& container) {
         std::vector<int> raw_data;
@@ -105,39 +103,12 @@ public:
             raw_data.push_back(static_cast<int>(val));
         }
 
-        std::clock_t start = std::clock();
-        
-        // Hatanın çözümü: T tipi std::vector<int> ise internal_container std::vector<Node> olmalı
-        // Bunu C++98'de sağlamanın en temiz yolu, T'nin tipine göre Node konteynerini seçmektir.
-        
-        // Önce int'leri Node'a çeviriyoruz
-        // Not: Burada 'internal_container' tipi T'nin kendisi değil, Node versiyonu olmalı.
-        // main.cpp'de hem vector hem deque çağırdığın için buradaki mantığı ikiye ayırıyoruz:
-        
+        std::clock_t start = std::clock();   
         return runInternalSort(raw_data, container, start);
     }
 
-    // Yardımıcı: Vector için
-    static double runInternalSort(std::vector<int>& raw, std::vector<int>& target, std::clock_t start) {
-        std::vector<Node> internal_vec;
-        for (size_t i = 0; i < raw.size(); ++i) internal_vec.push_back(Node(raw[i]));
-        sortImplementation(internal_vec);
-        target.clear();
-        for (size_t i = 0; i < internal_vec.size(); ++i) target.push_back(internal_vec[i].value);
-        std::clock_t end = std::clock();
-        return static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
-    }
-
-    // Yardımcı: Deque için
-    static double runInternalSort(std::vector<int>& raw, std::deque<int>& target, std::clock_t start) {
-        std::deque<Node> internal_deq;
-        for (size_t i = 0; i < raw.size(); ++i) internal_deq.push_back(Node(raw[i]));
-        sortImplementation(internal_deq);
-        target.clear();
-        for (size_t i = 0; i < internal_deq.size(); ++i) target.push_back(internal_deq[i].value);
-        std::clock_t end = std::clock();
-        return static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
-    }
+    static double runInternalSort(std::vector<int>& raw, std::vector<int>& target, std::clock_t start);
+    static double runInternalSort(std::vector<int>& raw, std::deque<int>& target, std::clock_t start);
 
     static void printBefore(int argc, char** argv);
 };

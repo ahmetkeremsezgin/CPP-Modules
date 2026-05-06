@@ -17,10 +17,30 @@ std::vector<size_t> PmergeMe::generateJacobsthal(size_t n) {
 
 void PmergeMe::printBefore(int argc, char **argv) {
     std::cout << "Before: ";
-    int limit = (argc > 6) ? 5 : argc - 1;
+    int limit = (argc > 5) ? 4 : argc - 1;
     for (int i = 1; i <= limit; ++i) {
         std::cout << argv[i] << (i == limit ? "" : " ");
     }
-    if (argc > 6) std::cout << " [...]";
+    if (argc > 5) std::cout << " [...]";
     std::cout << std::endl;
+}
+
+double PmergeMe::runInternalSort(std::vector<int>& raw, std::deque<int>& target, std::clock_t start) {
+        std::deque<Node> internal_deq;
+        for (size_t i = 0; i < raw.size(); ++i) internal_deq.push_back(Node(raw[i]));
+        sortImplementation(internal_deq);
+        target.clear();
+        for (size_t i = 0; i < internal_deq.size(); ++i) target.push_back(internal_deq[i].value);
+        std::clock_t end = std::clock();
+        return static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
+}
+
+double PmergeMe::runInternalSort(std::vector<int>& raw, std::vector<int>& target, std::clock_t start) {
+        std::vector<Node> internal_vec;
+        for (size_t i = 0; i < raw.size(); ++i) internal_vec.push_back(Node(raw[i]));
+        sortImplementation(internal_vec);
+        target.clear();
+        for (size_t i = 0; i < internal_vec.size(); ++i) target.push_back(internal_vec[i].value);
+        std::clock_t end = std::clock();
+        return static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
 }

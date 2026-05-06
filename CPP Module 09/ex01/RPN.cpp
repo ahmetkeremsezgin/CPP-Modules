@@ -1,19 +1,19 @@
 #include "RPN.hpp"
 
-rpn::rpn() {}
+Rpn::Rpn() {}
 
-rpn::rpn(const rpn& cpy) {
+Rpn::Rpn(const Rpn& cpy) {
     *this = cpy;
 }
 
-rpn& rpn::operator=(const rpn& cpy) {
+Rpn& Rpn::operator=(const Rpn& cpy) {
     (void)cpy;
     return *this;
 }
 
-rpn::~rpn() {}
+Rpn::~Rpn() {}
 
-int rpn::exec(std::string data) {
+int Rpn::exec(std::string data) {
     for (size_t i = 0; i < data.length(); ++i) {
         if (isspace(data[i])) continue;
 
